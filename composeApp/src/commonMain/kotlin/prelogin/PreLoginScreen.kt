@@ -23,7 +23,10 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.PathEffect
 import androidx.compose.ui.graphics.painter.Painter
+import androidx.compose.ui.text.SpanStyle
+import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import cafe.adriel.voyager.core.model.ScreenModel
@@ -67,29 +70,34 @@ class PreLoginScreen(
     private fun BottomContent() {
         Column(modifier = Modifier
             .fillMaxWidth()
-            .fillMaxHeight(fraction = 0.)
-            .height(48.dp)
+            .height(64.dp)
             .background(Color.White),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Top) {
             val pathEffect = PathEffect.dashPathEffect(
-                floatArrayOf(10f,10f,20f,2f),
-                100f
+                floatArrayOf(10f,0f),
+                0f
             )
-            DottedLine(pathEffect)
-            Row(modifier = Modifier
-                .fillMaxWidth()
-                .padding(top = 18.dp),
-                horizontalArrangement = Arrangement.Center,
-                verticalAlignment = Alignment.CenterVertically) {
-                Text("Don't have an account? ",
-                    fontSize = 12.sp,
-                    modifier = Modifier.alpha(0.4f))
-                Text("Sign up",
-                    fontSize = 12.sp,
-                    fontWeight = FontWeight.Bold,
-                    color = Color(0xFF262626))
+            val annotatedString = buildAnnotatedString {
+                withStyle(SpanStyle(
+                    color = Color(0x66000000),
+                    fontWeight = FontWeight.Normal,
+                    fontSize = 12.sp)
+                ) {
+                    append("Don't have an account? ")
+                    withStyle(SpanStyle(
+                        fontWeight = FontWeight.Bold,
+                        color = Color(0xFF000000)
+                    )) {
+                        append("Sign up")
+                    }
+                }
             }
+            DottedLine(pathEffect)
+            Text(
+                annotatedString,
+                modifier = Modifier.padding(18.dp)
+            )
         }
     }
 

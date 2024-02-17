@@ -32,21 +32,11 @@ object ProfileIconConfig {
         Stories(
             shouldHighlight = true,
             usernameShouldBeBold = false
-        );
+        )
+    }
 
-        fun shouldHighlight(): Boolean {
-            return when (this) {
-                PreLogin -> false
-                Stories -> true
-            }
-        }
-
-        fun usernameShouldBeBold(): Boolean {
-            return when (this) {
-                PreLogin -> true
-                Stories -> false
-            }
-        }
+    enum class Axis {
+        HORIZONTAL, VERTICAL
     }
 
     data class Input(val image: Painter, val username: String)
@@ -74,7 +64,7 @@ fun ProfileIcon(
                 .size(80.dp)
                 .clip(CircleShape)
                 .border(
-                    BorderStroke(if (context.shouldHighlight()) 2.dp else 0.dp, gradient),
+                    BorderStroke(if (context.shouldHighlight) 2.dp else 0.dp, gradient),
                     shape = CircleShape
                 ),
             painter = input.image,
@@ -85,7 +75,7 @@ fun ProfileIcon(
                 .padding(top = 8.dp),
             text = input.username,
             fontWeight =
-            if (context.usernameShouldBeBold()) FontWeight.Bold else FontWeight.Normal,
+            if (context.usernameShouldBeBold) FontWeight.Bold else FontWeight.Normal,
             fontSize = 12.sp
         )
     }
