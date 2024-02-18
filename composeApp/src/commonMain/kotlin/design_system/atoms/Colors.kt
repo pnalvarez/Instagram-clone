@@ -9,4 +9,6 @@ object Colors {
     val secondaryProfile = Color(0xFFEF5350)
     val tertiaryProfile = Color(0xFFF44336)
     val backgroundGrey = Color(0xFFFAFAFA)
+    val textDefault = Color(0xFF262626)
+    val borderDefault = Color(0x16000000)
 }

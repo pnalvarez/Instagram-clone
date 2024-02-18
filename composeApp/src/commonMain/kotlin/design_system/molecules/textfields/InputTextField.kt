@@ -1,5 +1,6 @@
 package design_system.molecules.textfields
 
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.OutlinedTextField
@@ -24,22 +25,26 @@ fun InputTextField(
     placeholder: String = "",
     isSecure: Boolean = false) {
     TextField(
-        modifier = modifier,
+        modifier = modifier.border(
+            1.dp,
+            Colors.borderDefault,
+            shape = RoundedCornerShape(8.dp)
+        ),
         value = text.value,
         onValueChange = { newText ->
             text.value = newText
         },
         shape = RoundedCornerShape(8.dp),
         colors = TextFieldDefaults.textFieldColors(
+            textColor = Colors.textDefault,
             backgroundColor = Colors.backgroundGrey,
             focusedIndicatorColor = Color.Transparent,
             unfocusedIndicatorColor = Color.Transparent,
-            placeholderColor = Color.Red
+            placeholderColor = Color(0x33000000)
         ),
-        label = { Text(text = label, modifier = Modifier.offset(y = -Spacing.xxs)) },
+        label = { Text(text = label) },
         placeholder = { Text(
             text = placeholder,
-            textAlign = TextAlign.Center,
-            modifier = Modifier.offset(y = -Spacing.xxs)) }
+            textAlign = TextAlign.Center) }
     )
 }
