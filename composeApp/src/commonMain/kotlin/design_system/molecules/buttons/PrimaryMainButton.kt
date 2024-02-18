@@ -1,4 +1,4 @@
-package design_system
+package design_system.molecules.buttons
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -13,21 +13,36 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
-object PrimaryMainButtonConfig {
+data object PrimaryMainButtonConfig {
     enum class ImageAlignment {
         START, END
+    }
+
+    enum class Style(val backgroundColor: Color) {
+        BRAND(backgroundColor = Color(0xFF3797EF)),
+        ACCENT(backgroundColor = Color(0xFF191919))
+    }
+
+    enum class Status(
+        val opacity: Float,
+        val isInteractionEnabled: Boolean
+    ) {
+        ENABLED(opacity = 1f, isInteractionEnabled = true),
+        DISABLED(opacity = 0.4f, isInteractionEnabled = false)
     }
 }
 
 @Composable
 private fun IconImage(image: Painter?) {
-    if (image != null) Image(
+    if (image == null) return
+    Image(
         image,
         modifier = Modifier.size(16.dp),
         contentDescription = null
@@ -53,15 +68,19 @@ fun PrimaryMainButton(
     text: String,
     image: Painter? = null,
     imageAlignment: PrimaryMainButtonConfig.ImageAlignment = PrimaryMainButtonConfig.ImageAlignment.START,
+    style: PrimaryMainButtonConfig.Style = PrimaryMainButtonConfig.Style.BRAND,
+    status: PrimaryMainButtonConfig.Status = PrimaryMainButtonConfig.Status.ENABLED,
     onClick: () -> Unit
 ) {
 
     Card(
         modifier = modifier
-            .padding(16.dp)
-            .clickable { onClick() },
+            .clickable(
+                enabled = status.isInteractionEnabled
+            ) { onClick() }
+            .alpha(status.opacity),
         shape = RoundedCornerShape(8.dp),
-        backgroundColor = Color(0xFF3797EF)
+        backgroundColor = style.backgroundColor,
     ) {
         Row(
             horizontalArrangement = Arrangement.Center,
