@@ -16,6 +16,7 @@ import design_system_catalog.DesignSystemCatalogScreen
 import org.jetbrains.compose.resources.ExperimentalResourceApi
 import org.jetbrains.compose.resources.painterResource
 import prelogin.PreLoginScreen
+import signin.SignInScreen
 
 class CatalogScreen : Screen {
     @OptIn(ExperimentalResourceApi::class)
@@ -34,6 +35,10 @@ class CatalogScreen : Screen {
                     profileImage = profileImage,
                     userName = "eupedroalvarez"
                 )
+            )
+            ScreenLink(
+                "Sign In",
+                SignInScreen()
             )
             ScreenLink(
                 "Design System",

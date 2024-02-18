@@ -33,6 +33,7 @@ import design.ProfileIcon
 import design.ProfileIconConfig
 import design_system.atoms.Spacing
 import design_system.molecules.buttons.TertiaryMainButton
+import design_system.molecules.images.LogoImage
 import org.jetbrains.compose.resources.ExperimentalResourceApi
 import org.jetbrains.compose.resources.painterResource
 
@@ -116,19 +117,15 @@ class PreLoginScreen(
                 verticalArrangement = Arrangement.Center,
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                Image(
-                    modifier = Modifier.size(
-                        width = 182.dp,
-                        height = 48.dp
-                    ),
-                    painter = painterResource("Instagram Logo@3x.png"),
-                    contentDescription = null
-                )
+
+                LogoImage()
+
                 ProfileIcon(
                     modifier = Modifier.padding(top = Spacing.lx4),
                     input = ProfileIconConfig.Input(image = profileImage, username = userName),
                     context = ProfileIconConfig.Context.PreLogin
                 )
+
                 PrimaryMainButton(
                     modifier = Modifier
                         .padding(top = Spacing.s)
@@ -137,6 +134,7 @@ class PreLoginScreen(
                     text = "Log in",
                     onClick = { }
                 )
+
                 TertiaryMainButton(
                     modifier = Modifier.padding(top = Spacing.xxl),
                     text = "Switch accounts",

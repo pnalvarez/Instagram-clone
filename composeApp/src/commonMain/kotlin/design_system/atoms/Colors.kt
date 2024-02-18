@@ -8,4 +8,5 @@ object Colors {
     val primaryProfile = Color(0xFFE57373)
     val secondaryProfile = Color(0xFFEF5350)
     val tertiaryProfile = Color(0xFFF44336)
+    val backgroundGrey = Color(0xFFFAFAFA)
 }

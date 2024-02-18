@@ -28,6 +28,7 @@ class DesignSystemCatalogScreen: Screen {
             ) {
                 ScreenLink("Buttons", ButtonScreen())
                 ScreenLink("Profile Icon", ProfileIconScreen())
+                ScreenLink("Text Fields", InputTextFieldScreen())
             }
         })
     }
