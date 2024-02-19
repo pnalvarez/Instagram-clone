@@ -42,7 +42,7 @@ class PreLoginViewModel : ScreenModel {
 }
 
 class PreLoginScreen(
-    private val profileImage: Painter,
+    private val profileImage: String,
     private val userName: String
 ) : Screen {
     @Composable

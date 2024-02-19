@@ -19,6 +19,8 @@ import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import org.jetbrains.compose.resources.ExperimentalResourceApi
+import org.jetbrains.compose.resources.painterResource
 
 object ProfileIconConfig {
     enum class Context(
@@ -39,9 +41,14 @@ object ProfileIconConfig {
         HORIZONTAL, VERTICAL
     }
 
-    data class Input(val image: Painter, val username: String)
+    data class Input(
+        val image: String,
+        val username: String,
+        val isLive: Boolean = false
+    )
 }
 
+@OptIn(ExperimentalResourceApi::class)
 @Composable
 fun ProfileIcon(
     modifier: Modifier = Modifier,
@@ -67,7 +74,7 @@ fun ProfileIcon(
                     BorderStroke(if (context.shouldHighlight) 2.dp else 0.dp, gradient),
                     shape = CircleShape
                 ),
-            painter = input.image,
+            painter = painterResource(input.image),
             contentDescription = null,
         )
         Text(

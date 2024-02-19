@@ -27,13 +27,13 @@ class ProfileIconScreen: Screen {
             ) {
                 ProfileIcon(
                     input = ProfileIconConfig.Input(
-                        image = painterResource("pedro.jpeg"),
+                        image = "pedro.jpeg",
                         username = "prelogin"),
                     context = ProfileIconConfig.Context.PreLogin
                 )
                 ProfileIcon(
                     input = ProfileIconConfig.Input(
-                        image = painterResource("pedro.jpeg"),
+                        image = "pedro.jpeg",
                         username = "stories"),
                     context = ProfileIconConfig.Context.Stories
                 )
