@@ -40,11 +40,10 @@ fun TertiaryMainButton(
     status: TertiaryMainButtonPrimaryConfig.Status = TertiaryMainButtonPrimaryConfig.Status.ENABLED,
     onClick: () -> Unit
 ) {
-    Row {
+    Row(modifier) {
         when (imageAlignment) {
             TertiaryMainButtonPrimaryConfig.ImageAlignment.START ->
                 StartImageContent(
-                    modifier = modifier,
                     text = text,
                     image = image,
                     status = status,
@@ -53,7 +52,6 @@ fun TertiaryMainButton(
 
             TertiaryMainButtonPrimaryConfig.ImageAlignment.END ->
                 EndImageContent(
-                    modifier = modifier,
                     text = text,
                     image = image,
                     status = status,
@@ -65,13 +63,16 @@ fun TertiaryMainButton(
 
 @Composable
 private fun StartImageContent(
-    modifier: Modifier,
     text: String,
     image: Painter? = null,
     status: TertiaryMainButtonPrimaryConfig.Status,
     onClick: () -> Unit
 ) {
     Row(
+        modifier = Modifier.clickable(
+            enabled = status.isInteractionEnabled
+        ) { onClick() }
+            .alpha(status.opacity),
         horizontalArrangement = Arrangement.spacedBy(16.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
@@ -82,11 +83,6 @@ private fun StartImageContent(
                 contentDescription = null
             )
         Text(
-            modifier = modifier
-                .clickable(
-                    enabled = status.isInteractionEnabled
-                ) { onClick() }
-                .alpha(status.opacity),
             text = text,
             color = Color(0xFF3797EF),
             textAlign = TextAlign.Center,
@@ -98,22 +94,20 @@ private fun StartImageContent(
 
 @Composable
 private fun EndImageContent(
-    modifier: Modifier,
     text: String,
     image: Painter? = null,
     status: TertiaryMainButtonPrimaryConfig.Status,
     onClick: () -> Unit
 ) {
     Row(
+        modifier = Modifier.clickable(
+            enabled = status.isInteractionEnabled
+        ) { onClick() }
+            .alpha(status.opacity),
         horizontalArrangement = Arrangement.spacedBy(16.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
         Text(
-            modifier = modifier
-                .clickable(
-                    enabled = status.isInteractionEnabled
-                ) { onClick() }
-                .alpha(status.opacity),
             text = text,
             color = Color(0xFF3797EF),
             textAlign = TextAlign.Center,

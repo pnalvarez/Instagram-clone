@@ -1,5 +1,7 @@
 package signin
 
+import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.mutableStateOf
 import cafe.adriel.voyager.core.model.ScreenModel
 import cafe.adriel.voyager.core.model.StateScreenModel
 
@@ -7,6 +9,7 @@ class SignInScreenModel(initialState: State = State()) : StateScreenModel<SignIn
     initialState
 ) {
     data class State(
-        var someData: String? = null
+        var username: MutableState<String> = mutableStateOf(""),
+        var password: MutableState<String> = mutableStateOf("")
     )
 }
