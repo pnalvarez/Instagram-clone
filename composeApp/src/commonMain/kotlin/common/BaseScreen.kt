@@ -11,6 +11,7 @@ import androidx.compose.ui.unit.dp
 import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
+import design_system.atoms.Spacing
 import general_catalog.CatalogScreen
 import org.jetbrains.compose.resources.ExperimentalResourceApi
 import org.jetbrains.compose.resources.painterResource
@@ -18,6 +19,7 @@ import org.jetbrains.compose.resources.painterResource
 @OptIn(ExperimentalResourceApi::class)
 @Composable
 fun BaseScreen(
+    applyHorizontalPadding: Boolean = true,
     content: @Composable () -> Unit,
     bottomBar: @Composable () -> Unit = { }
 ) {
@@ -26,7 +28,7 @@ fun BaseScreen(
         Image(
             modifier = Modifier
                 .size(64.dp)
-                .padding(20.dp)
+                .padding(Spacing.l)
                 .clickable {
                     if (navigator.canPop) navigator.pop()
                 },

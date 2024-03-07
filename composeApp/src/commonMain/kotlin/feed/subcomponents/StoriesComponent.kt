@@ -31,9 +31,9 @@ fun StoriesComponent(
     ) {
         items(input.stories) {item ->
             ProfileIcon(
-                modifier = Modifier.padding(horizontal = 10.dp),
+                modifier = Modifier.padding(horizontal = 5.dp),
                 input = item,
-                context = ProfileIconConfig.Context.Stories
+                context = ProfileIconConfig.Context.Stories(isLive = false)
             )
         }
     }

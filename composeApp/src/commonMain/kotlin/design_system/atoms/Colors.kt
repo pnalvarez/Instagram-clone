@@ -13,4 +13,5 @@ object Colors {
     val textTransparent = Color(0x66000000)
     val borderDefault = Color(0x16000000)
     val dividerGrey = Color(0x33000000)
+    val secondaryGrey = Color(0x12000000)
 }

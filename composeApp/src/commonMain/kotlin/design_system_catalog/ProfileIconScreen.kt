@@ -19,7 +19,7 @@ class ProfileIconScreen: Screen {
     @OptIn(ExperimentalResourceApi::class)
     @Composable
     override fun Content() {
-        BaseScreen({
+        BaseScreen(content = {
             Column(
                 modifier = Modifier.fillMaxSize(),
                 verticalArrangement = Arrangement.spacedBy(16.dp),
@@ -29,13 +29,19 @@ class ProfileIconScreen: Screen {
                     input = ProfileIconConfig.Input(
                         image = "pedro.jpeg",
                         username = "prelogin"),
-                    context = ProfileIconConfig.Context.PreLogin
+                    context = ProfileIconConfig.Context.PreLogin()
                 )
                 ProfileIcon(
                     input = ProfileIconConfig.Input(
                         image = "pedro.jpeg",
                         username = "stories"),
-                    context = ProfileIconConfig.Context.Stories
+                    context = ProfileIconConfig.Context.Stories(isLive = false)
+                )
+                ProfileIcon(
+                    input = ProfileIconConfig.Input(
+                        image = "pedro.jpeg",
+                        username = "stories"),
+                    context = ProfileIconConfig.Context.Stories(isLive = true)
                 )
             }
         })

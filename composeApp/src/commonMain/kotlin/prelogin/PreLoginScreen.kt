@@ -123,7 +123,7 @@ class PreLoginScreen(
                 ProfileIcon(
                     modifier = Modifier.padding(top = Spacing.lx4),
                     input = ProfileIconConfig.Input(image = profileImage, username = userName),
-                    context = ProfileIconConfig.Context.PreLogin
+                    context = ProfileIconConfig.Context.PreLogin()
                 )
 
                 PrimaryMainButton(
