@@ -3,6 +3,7 @@ package feed
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -48,13 +49,10 @@ class FeedScreen: Screen {
                 verticalArrangement = Arrangement.Top
             ) {
                 StoriesComponent(
-                    modifier = Modifier.fillMaxWidth(),
+                    modifier = Modifier.fillMaxWidth().padding(top = Spacing.m),
                     input = screenModel.state.value.stories
                 )
-                Divider(
-                    Modifier.height(1.dp).fillMaxWidth().weight(1f),
-                    Colors.dividerGrey
-                )
+                Divider(modifier = Modifier.padding(top = Spacing.m))
                 PostSection(modifier = Modifier.padding(top = Spacing.xl))
             }
         })
@@ -63,37 +61,46 @@ class FeedScreen: Screen {
     @OptIn(ExperimentalResourceApi::class)
     @Composable
     private fun TopHeader() {
-        Row(
-            modifier = Modifier.padding(bottom = Spacing.m),
-            horizontalArrangement = Arrangement.Center
-        ) {
-            Image(
-                modifier = Modifier
-                    .padding(start = Spacing.s)
-                    .size(24.dp)
-                    .clickable { println("Camera") },
-                painter = painterResource("camera.png"),
-                contentDescription = null
-            )
-            Spacer(modifier = Modifier.weight(1f))
-            LogoImage(size = LogoImageConfig.Size.LARGE)
-            Spacer(modifier = Modifier.weight(1f))
-            Image(
-                modifier = Modifier
-                    .padding(end = Spacing.l)
-                    .size(24.dp)
-                    .clickable { println("Share") },
-                painter = painterResource("igtv.png"),
-                contentDescription = null
-            )
-            Image(
-                modifier = Modifier
-                    .padding(end = Spacing.l)
-                    .size(24.dp)
-                    .clickable { println("Share") },
-                painter = painterResource("Messenger.png"),
-                contentDescription = null
-            )
+        Column(modifier = Modifier.fillMaxWidth()) {
+            Box(
+                modifier = Modifier.fillMaxWidth(),
+                contentAlignment = Alignment.Center
+            ) {
+                Row(
+                    modifier = Modifier
+                        .padding(bottom = Spacing.m)
+                        .fillMaxWidth(),
+                    horizontalArrangement = Arrangement.Center
+                ) {
+                    Image(
+                        modifier = Modifier
+                            .padding(start = Spacing.s)
+                            .size(24.dp)
+                            .clickable { println("Camera") },
+                        painter = painterResource("camera.png"),
+                        contentDescription = null
+                    )
+                    Spacer(modifier = Modifier.weight(1f))
+                    Image(
+                        modifier = Modifier
+                            .padding(end = Spacing.l)
+                            .size(24.dp)
+                            .clickable { println("Share") },
+                        painter = painterResource("igtv.png"),
+                        contentDescription = null
+                    )
+                    Image(
+                        modifier = Modifier
+                            .padding(end = Spacing.l)
+                            .size(24.dp)
+                            .clickable { println("Share") },
+                        painter = painterResource("Messenger.png"),
+                        contentDescription = null
+                    )
+                }
+                LogoImage(size = LogoImageConfig.Size.LARGE, modifier = Modifier.fillMaxWidth())
+            }
+            Divider()
         }
     }
 
@@ -111,7 +118,7 @@ class FeedScreen: Screen {
                 postImage = "post_photo.png",
                 likeInfo = PostCellConfig.LikeInfo(
                     images = listOf("thumb-like.png", "thumb-like.png"),
-                    topLikerName = "advlarissamartins",
+                    topLikerName = "eupedroalvarez",
                     likesCount = 20000
                 ),
                 commentInfo = PostCellConfig.Comments.CommentInfo(
@@ -133,7 +140,7 @@ class FeedScreen: Screen {
                 postImage = "post_photo.png",
                 likeInfo = PostCellConfig.LikeInfo(
                     images = listOf("thumb-like.png", "thumb-like.png", "thumb-like.png"),
-                    topLikerName = "advlarissamartins",
+                    topLikerName = "eupedroalvarez",
                     likesCount = 20000
                 ),
                 commentInfo = PostCellConfig.Comments.CommentInfo(
@@ -151,7 +158,7 @@ class FeedScreen: Screen {
                 postImage = "post_photo.png",
                 likeInfo = PostCellConfig.LikeInfo(
                     images = listOf("thumb-like.png"),
-                    topLikerName = "advlarissamartins",
+                    topLikerName = "eupedroalvarez",
                     likesCount = 20023
                 ),
                 commentInfo = PostCellConfig.Comments.CommentInfo(
